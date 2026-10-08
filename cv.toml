@@ -19,7 +19,7 @@ achievements = []
   "Statistical Analysis", "SMOTE", "imbalanced-learn"]
 "Data engineering and cloud" = ["AWS Lambda", "AWS S3", "AWS Glue", "AWS SNS", "AWS SAM", "CloudFormation", "ETL", "Data Pipelines",
   "Data Quality Checks", "Parquet", "PostgreSQL", "SQLite", "Relational Databases", "Data Cleaning"]
-"Web and software engineering" = ["Node.js", "REST APIs", "Git", "GitHub", "Code Reviews", "Pair Programming",
+"Web and software engineering" = ["Node.js", "FastAPI", "SQLAlchemy", "Jinja2", "REST APIs", "Git", "GitHub", "Code Reviews", "Pair Programming",
   "Testing", "pytest", "GitHub Actions", "Debugging", "Log Analysis", "Production Support"]
 "Reporting and tools" = ["Microsoft Excel", "PowerPoint", "Data Visualisation", "Dashboards", "Reporting",
   "GitHub Copilot", "ChatGPT", "Generative AI tools"]
@@ -97,12 +97,15 @@ bullets = [
 
 [[projects]]
 id = "p4"
-name = "Optum - Database Reporting Platform"
-tech = ["Python", "SQL"]
-link = ""
-dates = ""
+name = "Database Reporting Platform (rebuilt 2026)"
+tech = ["Python", "SQL", "PostgreSQL", "SQLite", "SQLAlchemy", "FastAPI", "Jinja2", "Chart.js", "pandas"]
+link = "github.com/shubham-italiya/database-reporting-platform"
+dates = "Rebuilt Oct 2026"
 bullets = [
-  "Built a data platform that connects to a relational database, visualises records on screen and generates automated daily reports.",
+  "Built a reporting platform on a 16-table relational database (Sakila sample, 16,044 rentals) with a FastAPI web dashboard: daily KPIs against a 7-day baseline, a revenue chart and a searchable, paged rentals table.",
+  "Wrote the reporting queries as plain SQL (joins, aggregates and window functions such as RANK and SUM OVER) that run unchanged on SQLite and PostgreSQL.",
+  "Automated a daily HTML e-mail report (Jinja2, matplotlib, SMTP) with top films, category revenue, a store comparison and an overdue-rentals list, saved alongside CSV files.",
+  "Covered it with 22 tests that check the numbers add up, run in GitHub Actions CI on both SQLite and PostgreSQL 16.",
 ]
 
 [[projects]]
@@ -164,7 +167,7 @@ name = "aws-serverless-data-pipeline"
 published = true
 [repos.p4]
 name = "database-reporting-platform"
-published = false
+published = true
 [repos.p5]
 name = "flight-deal-finder"
 published = false

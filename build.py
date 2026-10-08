@@ -56,14 +56,11 @@ def build(cv: dict) -> str:
     for pr in cv.get("projects", []):
         title, tag = split_name(pr["name"])
         repo = cv.get("repos", {}).get(pr["id"], {})
-        if repo.get("published"):
-            link = f'<a href="{gh}/{e(repo["name"])}">View code &rarr;</a>'
-        else:
-            link = '<span class="soon">Code: coming soon</span>'
+        link = f'<a href="{gh}/{e(repo["name"])}">View code &rarr;</a>' if repo.get("published") else ""
         cards.append(f"""
       <article class="card project reveal"><h3>{e(title)}</h3>
         <div class="meta">{f'<span class="tag" style="margin:0 6px 0 0">{e(tag)}</span>' if tag else ''}{e(pr.get('dates') or 'Personal project')}</div>{points(pr['bullets'], 3)}
-        {chips(pr.get('tech', []))}<div class="links">{link}</div></article>""")
+        {chips(pr.get('tech', []))}{f'<div class="links">{link}</div>' if link else ''}</article>""")
 
     skills = "".join(f'<div class="card reveal"><h3>{e(group)}</h3>{chips(items)}</div>'
                      for group, items in cv.get("skills", {}).items())
