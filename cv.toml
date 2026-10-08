@@ -1,0 +1,169 @@
+# Data for the portfolio website. Run:  python3 build.py   (writes index.html)
+# Keep it in step with ~/Documents/job-applier/base_cv.toml - only real facts.
+
+headline = "Final-year BSc Computer Science student | Python, SQL, AWS, TypeScript"
+summary = """
+Final-year Computer Science student at the University of East London with hands-on experience in data
+analysis, machine learning and full-stack web development. Skilled in Python (pandas, NumPy, scikit-learn,
+TensorFlow), SQL and AWS (Lambda, S3, Glue), and in TypeScript, JavaScript and Node.js from two years of
+remote full-stack development. Dissertation on time-series anomaly detection in financial transaction data
+using LSTM networks.
+"""
+certifications = []
+achievements = []
+
+[skills]
+"Programming languages" = ["Python", "SQL", "TypeScript", "JavaScript"]
+"Data science and machine learning" = ["pandas", "NumPy", "scikit-learn", "TensorFlow", "Keras", "Machine Learning",
+  "LSTM", "ARIMA", "Time-Series Forecasting", "statsmodels", "Anomaly Detection", "Predictive Modelling", "Feature Engineering",
+  "Statistical Analysis", "SMOTE", "imbalanced-learn"]
+"Data engineering and cloud" = ["AWS Lambda", "AWS S3", "AWS Glue", "AWS SNS", "ETL", "Data Pipelines",
+  "Data Quality Checks", "PostgreSQL", "SQLite", "Relational Databases", "Data Cleaning"]
+"Web and software engineering" = ["Node.js", "REST APIs", "Git", "GitHub", "Code Reviews", "Pair Programming",
+  "Testing", "pytest", "GitHub Actions", "Debugging", "Log Analysis", "Production Support"]
+"Reporting and tools" = ["Microsoft Excel", "PowerPoint", "Data Visualisation", "Dashboards", "Reporting",
+  "GitHub Copilot", "ChatGPT", "Generative AI tools"]
+
+# Newest first.
+[[experience]]
+id = "e1"
+title = "Data Analyst (Part-Time)"
+company = "RSVP Media Response Ltd"
+location = "Canary Wharf, London"
+dates = "Dec 2025 - Feb 2026"
+bullets = [
+  "Collected, cleaned and reshaped raw data exports from accounting software with automated Python (pandas) pipelines, ensuring data accuracy and integrity before loading into management dashboards.",
+  "Wrote and optimised SQL queries to extract key performance indicators (KPIs) from a multi-table relational database, reducing weekly report generation time by 40%.",
+  "Prepared reports, dashboards and visual presentations of business performance metrics for management, translating data trends into plain-language, actionable recommendations.",
+  "Built data visualisations and automated reporting in Excel and Python, reducing manual reporting effort and making insights easier to use for non-technical teams.",
+  "Extracted and interpreted business data with SQL to answer client and stakeholder queries.",
+  "Worked with finance and operations colleagues to understand reporting needs, and delivered accurate outputs on time.",
+  "Worked independently to find and fix data quality issues, taking ownership of deliverables and managing competing deadlines.",
+]
+
+[[experience]]
+id = "e2"
+title = "Full-Stack Developer (Remote)"
+company = "Right Q Infotech"
+location = "Remote"
+dates = "Oct 2023 - Dec 2025"
+bullets = [
+  "Developed and maintained production web services using TypeScript, JavaScript, Node.js and relational databases, delivering small, well-scoped changes that improved stability and user experience.",
+  "Wrote maintainable, testable code supported by code reviews and pair programming, using Git/GitHub and GitHub Copilot to speed up delivery responsibly.",
+  "Diagnosed and resolved live issues by investigating logs and SQL data, then documented fixes and follow-up actions to improve reliability and supportability.",
+  "Worked with product and integration colleagues to understand requirements, test changes and support the onboarding of external API connections following documented processes.",
+]
+
+[[projects]]
+id = "p1"
+name = "Cash Flow Forecasting Model (rebuilt 2026)"
+tech = ["Python", "TensorFlow", "Keras", "statsmodels", "pandas", "NumPy", "AWS Lambda", "AWS S3"]
+link = "github.com/shubham-italiya/cash-flow-forecasting"
+dates = "2025; rebuilt Oct 2026"
+bullets = [
+  "Built a pipeline that forecasts the next 30 days of daily cash inflow for a UK online retailer, from about one million real transactions cleaned into a 739-day net sales series.",
+  "Ran ADF stationarity tests on raw, log and differenced series and used them to set up a weekly seasonal ARIMA (SARIMA) model.",
+  "Compared a seasonal-naive baseline, SARIMA and a TensorFlow LSTM in a 6-fold rolling backtest; the LSTM had the lowest daily MAE (9% below SARIMA, 2% below the baseline), while SARIMA was best on 30-day totals.",
+  "Packaged the best model for AWS Lambda (container image and SAM template) with model files versioned in S3, and tested the handler locally.",
+  "Used generative AI tools to speed up data pre-processing, code documentation and model-comparison write-ups for a non-technical audience.",
+]
+
+[[projects]]
+id = "p2"
+name = "Customer Payment Behaviour Classifier (university group project, rebuilt 2026)"
+tech = ["Python", "scikit-learn", "imbalanced-learn", "pandas", "SQL", "SQLite"]
+link = "github.com/shubham-italiya/payment-behaviour-classifier"
+dates = "Oct 2024 - Dec 2024; rebuilt Oct 2026"
+bullets = [
+  "Built a model that flags customers likely to miss their next payment from six months of statement and payment history for 30,000 customers, reaching F1 0.54 and recall 0.57 on a held-out test set (34% higher F1 than a logistic-regression baseline).",
+  "Engineered 15 behaviour features in SQL (joins and CASE aggregates) from normalised customer, statement and outcome tables.",
+  "Compared SMOTE with class weights using stratified 5-fold cross-validation and tuned the decision threshold for F1; class weights won (PR-AUC 0.556 vs 0.528).",
+  "Excluded demographic fields so predictions rely only on payment behaviour; covered the pipeline with pytest tests and GitHub Actions CI.",
+  "Original 2024 version: university group project (team of 3) using PostgreSQL; I led team communication and presented the findings to a non-technical panel.",
+]
+
+[[projects]]
+id = "p3"
+name = "AWS Serverless Data Pipeline for Financial Datasets"
+tech = ["Python", "pandas", "AWS Lambda", "AWS Glue", "AWS S3", "AWS SNS"]
+link = ""
+dates = "Mar 2025 - Apr 2025"
+bullets = [
+  "Built a serverless ETL pipeline with AWS Glue and Lambda to ingest, validate and load daily transaction CSV files into a structured S3 data lake.",
+  "Implemented automated data quality checks (null rates, schema drift, outlier flags) that rejected malformed batches and triggered SNS alerts.",
+  "Structured the code as modular Python functions with versioned artefacts in S3, so the pipeline is easy to maintain and extend.",
+]
+
+[[projects]]
+id = "p4"
+name = "Optum - Database Reporting Platform"
+tech = ["Python", "SQL"]
+link = ""
+dates = ""
+bullets = [
+  "Built a data platform that connects to a relational database, visualises records on screen and generates automated daily reports.",
+]
+
+[[projects]]
+id = "p5"
+name = "Flight Deal Finder"
+tech = ["Python", "REST APIs"]
+link = ""
+dates = ""
+bullets = [
+  "Integrated a third-party REST API to track flight prices and send automated email alerts for cheap deals.",
+]
+
+[[education]]
+degree = "BSc (Hons) Computer Science"
+institution = "University of East London"
+location = "London"
+dates = "Jan 2024 - Sep 2027 (expected)"
+details = [
+  "Relevant modules: Machine Learning, Statistical Data Analysis, Databases & SQL, Cloud Computing, Software Engineering, Distributed Systems, Web Development, Data Structures & Algorithms",
+  "Dissertation: Time-Series Anomaly Detection in Financial Transaction Data using LSTM networks",
+  "Data Science Society: active member; took part in two internal machine learning hackathons",
+]
+
+# ----- Website settings -----
+[profile]
+name = "Shubham S. Italiya"
+role = "Full-Stack Developer & Data Analyst"
+tagline = "Final-year Computer Science student building data pipelines, machine-learning models and full-stack web apps."
+location = "London, UK"
+email = "ssitaliya415@gmail.com"
+linkedin = "https://www.linkedin.com/in/shubham-italiya-506a692ab"
+github_user = "shubham-italiya"
+open_to = "Graduate roles from September 2027, internships and part-time roles"
+cv_file = "Shubham_Italiya_CV.pdf"
+
+# Tiles at the top of the page. Real facts from the CV only; update them if a rebuilt project's result changes.
+[[profile.highlights]]
+value = "2+ years"
+label = "full-stack development with TypeScript and Node.js"
+[[profile.highlights]]
+value = "40%"
+label = "less weekly reporting time after optimising SQL"
+[[profile.highlights]]
+value = "+34% F1"
+label = "over a baseline for predicting late payers (30,000 customers)"
+[[profile.highlights]]
+value = "AWS"
+label = "serverless ETL with Lambda, Glue, S3 and SNS"
+
+# GitHub repository for each project id (shown once the project is published: set published = true).
+[repos.p1]
+name = "cash-flow-forecasting"
+published = true
+[repos.p2]
+name = "payment-behaviour-classifier"
+published = true   # set to true once the repository is public
+[repos.p3]
+name = "aws-serverless-data-pipeline"
+published = false
+[repos.p4]
+name = "database-reporting-platform"
+published = false
+[repos.p5]
+name = "flight-deal-finder"
+published = false
