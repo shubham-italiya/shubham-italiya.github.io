@@ -17,8 +17,8 @@ achievements = []
 "Data science and machine learning" = ["pandas", "NumPy", "scikit-learn", "TensorFlow", "Keras", "Machine Learning",
   "LSTM", "ARIMA", "Time-Series Forecasting", "statsmodels", "Anomaly Detection", "Predictive Modelling", "Feature Engineering",
   "Statistical Analysis", "SMOTE", "imbalanced-learn"]
-"Data engineering and cloud" = ["AWS Lambda", "AWS S3", "AWS Glue", "AWS SNS", "ETL", "Data Pipelines",
-  "Data Quality Checks", "PostgreSQL", "SQLite", "Relational Databases", "Data Cleaning"]
+"Data engineering and cloud" = ["AWS Lambda", "AWS S3", "AWS Glue", "AWS SNS", "AWS SAM", "CloudFormation", "ETL", "Data Pipelines",
+  "Data Quality Checks", "Parquet", "PostgreSQL", "SQLite", "Relational Databases", "Data Cleaning"]
 "Web and software engineering" = ["Node.js", "REST APIs", "Git", "GitHub", "Code Reviews", "Pair Programming",
   "Testing", "pytest", "GitHub Actions", "Debugging", "Log Analysis", "Production Support"]
 "Reporting and tools" = ["Microsoft Excel", "PowerPoint", "Data Visualisation", "Dashboards", "Reporting",
@@ -84,14 +84,15 @@ bullets = [
 
 [[projects]]
 id = "p3"
-name = "AWS Serverless Data Pipeline for Financial Datasets"
-tech = ["Python", "pandas", "AWS Lambda", "AWS Glue", "AWS S3", "AWS SNS"]
-link = ""
-dates = "Mar 2025 - Apr 2025"
+name = "AWS Serverless Data Pipeline (rebuilt 2026)"
+tech = ["Python", "pandas", "AWS Lambda", "AWS S3", "AWS SNS", "AWS Glue", "AWS SAM", "CloudFormation", "Parquet", "moto", "pytest"]
+link = "github.com/shubham-italiya/aws-serverless-data-pipeline"
+dates = "Mar 2025 - Apr 2025; rebuilt Oct 2026"
 bullets = [
-  "Built a serverless ETL pipeline with AWS Glue and Lambda to ingest, validate and load daily transaction CSV files into a structured S3 data lake.",
-  "Implemented automated data quality checks (null rates, schema drift, outlier flags) that rejected malformed batches and triggered SNS alerts.",
-  "Structured the code as modular Python functions with versioned artefacts in S3, so the pipeline is easy to maintain and extend.",
+  "Built a serverless pipeline for daily transaction CSV files on AWS (S3, Lambda, SNS, Glue), with all infrastructure defined in one SAM/CloudFormation template that passes cfn-lint.",
+  "Wrote 8 data-quality checks (schema drift, null rates, types, business rules, completeness, duplicates and volume anomalies with robust z-scores), with limits calibrated on 518 days of history; rejected batches are quarantined and trigger SNS alerts.",
+  "Tested the pipeline end to end on a mocked AWS account (moto) with 52 real days and 7 deliberately broken files: all 7 broken files were caught and no real day was rejected.",
+  "Wrote a Glue Python shell job that turns accepted batches into a date-partitioned Parquet data lake; it is idempotent and runs on a daily schedule.",
 ]
 
 [[projects]]
@@ -148,8 +149,8 @@ label = "less weekly reporting time after optimising SQL"
 value = "+34% F1"
 label = "over a baseline for predicting late payers (30,000 customers)"
 [[profile.highlights]]
-value = "AWS"
-label = "serverless ETL with Lambda, Glue, S3 and SNS"
+value = "7 / 7"
+label = "broken data files caught by my AWS pipeline's quality checks"
 
 # GitHub repository for each project id (shown once the project is published: set published = true).
 [repos.p1]
@@ -160,7 +161,7 @@ name = "payment-behaviour-classifier"
 published = true   # set to true once the repository is public
 [repos.p3]
 name = "aws-serverless-data-pipeline"
-published = false
+published = true
 [repos.p4]
 name = "database-reporting-platform"
 published = false
