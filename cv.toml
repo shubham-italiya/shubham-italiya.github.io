@@ -108,16 +108,6 @@ bullets = [
   "Covered it with 22 tests that check the numbers add up, run in GitHub Actions CI on both SQLite and PostgreSQL 16.",
 ]
 
-[[projects]]
-id = "p5"
-name = "Flight Deal Finder"
-tech = ["Python", "REST APIs"]
-link = ""
-dates = ""
-bullets = [
-  "Integrated a third-party REST API to track flight prices and send automated email alerts for cheap deals.",
-]
-
 [[education]]
 degree = "BSc (Hons) Computer Science"
 institution = "University of East London"
@@ -168,6 +158,3 @@ published = true
 [repos.p4]
 name = "database-reporting-platform"
 published = true
-[repos.p5]
-name = "flight-deal-finder"
-published = false
